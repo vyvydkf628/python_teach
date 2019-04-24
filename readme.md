@@ -1,6 +1,6 @@
 # 파이썬 기초
 
->"Life is too short, you ned python"
+>"Life is too short, you need python"
 
 ![python](http://story.wisedog.net/wp-content/uploads/2015/02/python_language_logo_300x300.png)
 
