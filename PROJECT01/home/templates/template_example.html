@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1. 반복문</h1>
+    {% for menu in my_list %}
+        <p>{{menu}}</p>
+    {% endfor%}
+    <hr>
+    {% for user in empty_list%}
+        <p>{{user}}</p>
+    {{empty}}
+        <p>현재는 가입한 유저가 없습니다.</p>
+    {% endfor%}
+    <hr>
+    <h1>2. 조건문</h1>
+    {% if '짜장면' in my_list%}
+        <p>짜장면에는 고추가루지</p>
+    {%endif%}
+    <hr>
+    {% for menu in my_list%}
+        {%if forloob.first% } 번 돌았음
+        <p>짜장면 _ 고추가루</p>
+        
+        <p>{{menu}}</p>
+        {%endif%}
+    {%endfor%}
+    
+    <h1>3. length filter 사용</h1>
+    {%for message in messages%}
+        {%if message|length > 5}
+            <p>글씨가 너무 길어요</p>
+        {% else %}
+            <p>{{message}},{{message|length}}</p>
+        {%endif%}
+    {%endfor%}
+    <hr>
+    
+</body>
+</html>

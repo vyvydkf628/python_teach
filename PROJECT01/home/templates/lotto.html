@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>로또번호 예측</h1>
+    자동 로또번호 추첨 {{lottos}}
+    {% if real_lottos == lottos%}
+        <p><strong>당첨되었습니다.</strong></p>
+    {% else%}
+        <p><strong>꽝입니다!</strong></p>
+    {% endif %}
+    {% for lotto in lottos%}
+        <p>{{lotto}}</p>
+        {% if lotto in real_lottos%}
+            <p><strong>일치</strong></p>
+        {% endif%}
+    {% endfor%}
+    <hr>
+    형식이가 뽑은 번호는 {{lottos}}
+    당첨 번호는 {{real_lottos}}
+</body>
+</html>

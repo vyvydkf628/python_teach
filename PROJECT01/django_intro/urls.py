@@ -18,7 +18,18 @@ from django.urls import path
 from home import views
 
 urlpatterns = [
+    path('home/pong/', views.pong),
+    path('home/ping/', views.ping),
+    path('home/template_example/', views.template_example),
+    path('home/isbirth/', views.isbirth),
+    path('home/area/<int:R>/', views.area),
+    path('home/mul/<int:num1>/<int:num2>/', views.mul),
+    path('home/name_age/<name>/<int:age>/', views.name_age),
+    path('home/cube/<int:num>/', views.cube),
+    path('home/hello/<name>/', views.hello),
     path('home/index/', views.index),
     path('home/hola/', views.hola),
+    path('home/dinner/', views.dinner),
+    path('home/lotto/', views.lotto),
     path('admin/', admin.site.urls),
 ]
