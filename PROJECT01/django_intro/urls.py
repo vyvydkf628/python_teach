@@ -18,6 +18,12 @@ from django.urls import path
 from home import views
 
 urlpatterns = [
+    path('home/user_create/',views.user_create),
+    path('home/user_new/',views.user_new),
+    path('home/throw/',views.throw),
+    path('home/get/',views.get),
+    path('home/result/',views.result),
+    path('home/catch/',views.catch),
     path('home/pong/', views.pong),
     path('home/ping/', views.ping),
     path('home/template_example/', views.template_example),

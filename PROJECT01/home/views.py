@@ -1,4 +1,4 @@
-import random
+import random, requests
 
 from datetime import datetime
 from django.shortcuts import render, HttpResponse
@@ -69,12 +69,44 @@ def ping(request):
 def pong(request):
     data = request.GET.get('data')
     return render(request, 'pong.html',{'data':data})
+    
+def catch(request):
+    return render(request, 'catch.html')
+    
+# artii API 를 통해 ascii 아트로 변환하여 보여주는 페이지
+def result(request):
+    #1. form 태그로 날린 데이터를 받는다. (GET 방식)
+    word= request.GET.get('word')
+    
+    #2. ARTII api 로 보낸 응답 결과를 텍스트로 폰트라는 변수에 저장
+    fonts = requests.get('http://artii.herokuapp.com/fonts_list').text
+    #3. fonts(str)를 fonts(list)로 바꿔준다.
+    fonts = fonts.split('\n')
+    #4. fonts(list)안에 들어있는 요소중 하나를 선택해서  font라는 변수에 저장한다.
+    font = random.choice(fonts)
+    #5 위에서 우리가 만든 word와 font를 가지고 다시 artii로 요청을 보낸 후에 해당 응답 결과를 result라는 변수에 저장한다.
+    result = requests.get(f'http://artii.herokuapp.com/make?text={word}&font={font}').text
+    return render(request,'result.html',{'result':result})
+    
+
+def throw(request):
+    return render(request,'throw.html')
+
+def get(request):
+    data = request.GET.get('data')
+    
+    numbers = range(1,46)
+    lottos = random.sample(numbers,6)
+    real_lottos = [6,10,17,29,39,41]
+    return render(request,'get.html',{'data':data,'lottos':lottos,'real_lottos':real_lottos})
 
 
 
 
+def user_new(request):
+    return render(request,'user_new.html')
 
-
-
-
-
+def user_create(request):
+    name = request.POST.get('name')
+    pwd = request.POST.get('pwd')
+    return render(request,'user_create.html',{'name':name,'pwd':pwd})
