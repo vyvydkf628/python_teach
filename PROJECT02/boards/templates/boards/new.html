@@ -1,0 +1,13 @@
+{%extends 'boards/base.html'%}
+
+{%block body%}
+    <h1 class = 'text-center'>new</h1>
+    <form action = '/boards/create/' method ='POST'>
+        {%csrf_token%}
+        <label for="title">title</label><br>
+        <input type="text" name="title" id = "title"/><br>
+        <label for="content">content</label><br>
+        <textarea name="content" id="content" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Submit"/><br>
+    </form>
+{% endblock %}

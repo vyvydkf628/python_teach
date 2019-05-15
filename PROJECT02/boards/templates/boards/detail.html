@@ -1,0 +1,14 @@
+{%extends 'boards/base.html'%}
+{%block body%}
+    <h1 class = 'text-center'>DETAIL</h1>
+    <hr>
+    <h2>{{board.pk}} 번 글입니다.</h2>
+    <p>제목 : {{board.title}}</p>
+    <p>내용 : {{board.content}}</p>
+    <p>글 작성 시각 : {{board.created_at}}</p>
+    <p>글 수정 시각 : {{board.updated_at}}</p>
+    <hr>
+    <a href = '/boards/{{board.pk}}/edit'>글 수정 </a>
+    <a href = '/boards/{{board.pk}}/delete'>글 삭제 </a>
+    <a href = '/boards/'>게시판으로 돌아가기 </a>
+{%endblock%}
