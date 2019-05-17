@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['python-practice1-popor628.c9users.io']
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

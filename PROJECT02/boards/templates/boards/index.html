@@ -5,8 +5,8 @@
     <hr>
     {% for board in boards %}
     <p>글 번호 : {{board.pk}}</p>
-    <a href = "/boards/{{board.pk}}">글 제목 : {{board.title}}</a>
+    <a href = '{% url 'boards:detail' board.pk %}'>글 제목 : {{board.title}}</a>
     <hr>
     {% endfor %}
-    <a href="/boards/new/">게시글 작성하기</a>
+    <a href='{%url 'boards:new' %}'>게시글 작성하기</a>
 {% endblock %}
