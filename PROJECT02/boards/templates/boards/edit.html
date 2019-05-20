@@ -2,7 +2,7 @@
 
 {%block body%}
     <h1 class = 'text-center'>edit</h1>
-    <form action = '{% url 'boards:update' board.pk %}' method ='POST'>
+    <form action = '' method ='POST'>
         {%csrf_token%}
         <label for="title">title</label><br>
         <input type="text" name="title" id = "title" value= '{{board.title}}'/><br>

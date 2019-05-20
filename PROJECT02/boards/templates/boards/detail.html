@@ -8,7 +8,29 @@
     <p>글 작성 시각 : {{board.created_at}}</p>
     <p>글 수정 시각 : {{board.updated_at}}</p>
     <hr>
+    
+    <form action='{%url 'boards:comments_create' board.pk%}' method= 'post'>
+        {%csrf_token%}
+        댓글 달기 : <input type="text" name="content"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <h3>{{comments | length}}</h3>
+    {% for comment in comments%}
+        <li>{{comment.content}}</li>
+        <form action= '{% url 'boards:comments_delete' board.pk content.pk%}',method= 'POST'>
+            {%csrf_token%}
+            <input type="submit" value="댓글 삭제"/>
+        </form>
+    {%empty%}
+        <p>댓글이 없어요..</p>
+    {%endfor%}
+    
+    <hr>
     <a href = '{% url 'boards:edit' board.pk%}'>글 수정 </a>
-    <a href = '{% url 'boards:delete' board.pk %}'>글 삭제 </a>
     <a href = '{%url 'boards:index'%}'>게시판으로 돌아가기 </a>
+    <form action ='{% url 'boards:delete' board.pk%}', method = 'POST'>
+        {%csrf_token%}
+        <input type="submit" value="삭제"/>
+    </form>
 {%endblock%}
