@@ -1,0 +1,15 @@
+{%extends 'boards/base.html'%}
+{%block body%}
+<h1>DETAIL</h1>
+<p>{{board.pk}}</p>
+<p>{{board.title}}</p>
+<p>{{board.content}}</p>
+<p>{{board.created_at}}</p>
+<p>{{board.updated_at}}</p>
+<form aciton = "{%url 'boards:delete' board.pk%}" method = 'POST'>
+    {%csrf_token%}
+    <input type="submit" value="게시글 삭제"/>
+</form>
+
+<a href="{% url 'boards:index' %}">[메인 페이지]</a>
+{%endblock%}

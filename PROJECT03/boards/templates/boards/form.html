@@ -1,0 +1,20 @@
+{%extends 'boards/base.html'%}
+{%block body%}
+{% load crispy_forms_tags %}
+    {% if request.resolver_match.url_name == 'create'%}
+        <h1 class = 'text-center'>create</h1>
+    {%else%}
+        <h1 class = 'text-center'>edit</h1>
+    {%endif%}
+    <hr>
+    
+    {%crispy form%}
+    
+    <hr>
+    {%if request.resolver_match.url_name == 'create'%}
+        <a href="{% url 'boards:index'%}"> [BACK]</a>
+    {%else%}
+        <a href="{% url 'boards:index'%}">[메인 페이지]</a>
+    {%endif%}
+
+{%endblock%}

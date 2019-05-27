@@ -10,6 +10,26 @@
 </head>
 <body>
     <div class = container>
+    {%if user.is_authenticated %}
+        <h1>안녕. {{user.username}}</h1>
+        <a href="{% url 'accounts:edit'%}">[회원 정보 수정]</a>
+        <a href="{% url 'accounts:change_password'%}">[비밀번호 변경]</a>
+        <form action = '{% url 'accounts:delete'%}' method = 'POST' style = 'display:inline;'>
+            {%csrf_token%}
+
+            <input type="submit" value="회원탈퇴"/>
+        </form>
+        <form action = '{% url 'accounts:logout'%}' method = 'POST' style = 'display:inline;'>
+            {%csrf_token%}
+            <input type="submit" value="로그아웃"/>
+        </form>
+    {%else%}
+        <h1>
+            <a href='{% url 'accounts:signup'%}'>회원가입</a>
+            <a href='{% url 'accounts:login'%}'>로그인</a>
+        </h1>
+    {%endif%}
+        <hr>
         {% block body%}
         {% endblock%}
     </div>
