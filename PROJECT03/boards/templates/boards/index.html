@@ -2,6 +2,7 @@
 {%block body%}
 <h1>INDEX</h1>
 {%for board in boards%}
+<p><b>글 작성자 : {{ board.user }}</b></p>
 <p>{{board.pk}}</p>
 <p>글 제목 : {{board.title}}</p>
 <a href="{% url 'boards:detail' board.pk%}">[상세글 보기 ]</a>
